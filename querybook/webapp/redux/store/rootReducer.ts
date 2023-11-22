@@ -16,6 +16,7 @@ import querySnippets from '../querySnippets/reducer';
 import queryView from '../queryView/reducer';
 import scheduledDocs from '../scheduledDataDoc/reducer';
 import search from '../search/reducer';
+import survey from '../survey/reducer';
 import tag from '../tag/reducer';
 import user from '../user/reducer';
 
@@ -38,4 +39,5 @@ export default combineReducers({
     tag,
     scheduledDocs,
     comment,
+    survey,
 });

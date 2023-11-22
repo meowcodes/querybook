@@ -1,6 +1,8 @@
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
 
+import { SURVEY_DISPLAY_DURATION } from 'components/Survey/SurveyToast';
+
 export const ToastManager: React.FC = () => (
     <Toaster
         position="bottom-right"
@@ -17,6 +19,9 @@ export const ToastManager: React.FC = () => (
             },
             success: {
                 duration: 3000,
+            },
+            custom: {
+                duration: SURVEY_DISPLAY_DURATION,
             },
         }}
     />

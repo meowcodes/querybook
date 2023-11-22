@@ -31,6 +31,7 @@ import {
     ScheduledDataDocAction,
 } from 'redux/scheduledDataDoc/types';
 import { ISearchState, SearchAction } from 'redux/search/types';
+import { ISurveyState, SurveyAction } from 'redux/survey/types';
 import { ITagState, TagAction } from 'redux/tag/types';
 import { IUserState, UserAction } from 'redux/user/types';
 
@@ -53,6 +54,7 @@ export interface IStoreState {
     readonly tag: ITagState;
     readonly scheduledDocs: IScheduledDataDocState;
     readonly comment: ICommentState;
+    readonly survey: ISurveyState;
 }
 
 export type AllAction =
@@ -73,6 +75,7 @@ export type AllAction =
     | GlobalStateAction
     | TagAction
     | ScheduledDataDocAction
-    | CommentAction;
+    | CommentAction
+    | SurveyAction;
 
 export type Dispatch = ThunkDispatch<IStoreState, null, AllAction>;

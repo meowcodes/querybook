@@ -3,6 +3,7 @@ import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
 import { AppLayout } from 'components/AppLayout/AppLayout';
 import { ConfirmationManager } from 'components/ConfirmationManager/ConfirmationManager';
+import { SurveyToastManager } from 'components/Survey/SurveyToastManager';
 import { UserLoader } from 'components/UserLoader/UserLoader';
 import history from 'lib/router-history';
 import { FourOhFour } from 'ui/ErrorPage/FourOhFour';
@@ -49,5 +50,6 @@ export const AppRouter: React.FunctionComponent = () => (
         </UserLoader>
         <ConfirmationManager />
         <ToastManager />
+        <SurveyToastManager />
     </Router>
 );

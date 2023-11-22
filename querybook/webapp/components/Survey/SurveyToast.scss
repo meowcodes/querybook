@@ -1,0 +1,50 @@
+.SurveyToast {
+    min-width: 240px;
+    max-width: 360px;
+    background-color: var(--bg-lightest);
+    border-radius: var(--border-radius);
+    .ButtonRow,
+    .RatingStars {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .RatingStars {
+        display: flex;
+        flex-direction: row-reverse;
+        input {
+            display: none;
+        }
+        label:not(:first-child) {
+            margin-right: 8px;
+        }
+        svg {
+            stroke: var(--color-yellow);
+        }
+    }
+
+    .RatingStars > input:checked ~ label,
+    .RatingStars:not(:checked) > label:hover,
+    .RatingStars:not(:checked) > label:hover ~ label {
+        svg {
+            fill: var(--color-yellow);
+        }
+    }
+
+    .RatingStars > input:checked + label:hover,
+    .RatingStars > input:checked ~ label:hover,
+    .RatingStars > label:hover ~ input:checked ~ label,
+    .RatingStars > input:checked ~ label:hover ~ label {
+        svg {
+            fill: var(--color-yellow);
+        }
+    }
+
+    .SurveyText {
+        textarea {
+            background-color: var(--bg-light);
+        }
+    }
+}
