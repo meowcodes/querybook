@@ -27,18 +27,23 @@ export const SurveyToast: React.FunctionComponent<IProps> = ({
     onSubmitText,
     onDismiss,
 }) => (
-    <div className="SurveyToast p12">
+    <div className="SurveyToast p16">
         <div>{questionText} </div>
-        <fieldset className="RatingStars mv12">
+        <fieldset className="RatingStars mv16">
             {Array.from({ length: 5 }, (_, i) => i + 1).map((idx) => (
                 <>
                     <input
+                        key={`input${5 - idx}`}
                         type="radio"
                         value={5 - idx}
                         checked={5 - idx === rating}
+                        onChange={() => null}
                     />
-                    <label>
-                        <Star key={5 - idx} onClick={() => onRate(5 - idx)} />
+                    <label key={`label${5 - idx}`}>
+                        <Star
+                            key={`star${5 - idx}`}
+                            onClick={() => onRate(5 - idx)}
+                        />
                     </label>
                 </>
             ))}

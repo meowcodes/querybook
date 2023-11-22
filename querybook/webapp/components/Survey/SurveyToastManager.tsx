@@ -22,6 +22,7 @@ export const SurveyToastManager: React.FunctionComponent = () => {
     const hideSurvey = React.useCallback(() => {
         toast.dismiss(toastId);
         dispatch(surveyActions.hideSurvey());
+        setToastId('');
     }, [dispatch, toastId]);
 
     const submitRating = React.useCallback(
@@ -71,11 +72,18 @@ export const SurveyToastManager: React.FunctionComponent = () => {
         [submitRating, surveyData?.id, toastId, updateRating]
     );
 
+    React.useEffect(() => {
+        if (!showSurvey && toastId) {
+            hideSurvey();
+        }
+    }, [hideSurvey, showSurvey, toastId]);
+
     // create toast
     React.useEffect(() => {
         if (showSurvey && !toastId) {
             const newToastId = toast.custom((t) => (
                 <SurveyToast
+                    key={t.id}
                     questionText={getQuestionText()}
                     onRate={onRating}
                     onTextChange={(e) => setText(e.target.value)}
@@ -99,6 +107,7 @@ export const SurveyToastManager: React.FunctionComponent = () => {
         if (showSurvey && toastId) {
             toast.custom(
                 <SurveyToast
+                    key={toastId}
                     questionText={getQuestionText()}
                     onRate={onRating}
                     onTextChange={(val) => setText(val)}

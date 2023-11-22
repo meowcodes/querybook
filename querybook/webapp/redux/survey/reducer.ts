@@ -3,7 +3,7 @@ import { produce } from 'immer';
 import { ISurveyState, SurveyAction } from './types';
 
 const initialState: ISurveyState = {
-    showSurvey: true,
+    showSurvey: false,
 };
 
 export default function surveyRecducer(
