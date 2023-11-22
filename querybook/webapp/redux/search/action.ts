@@ -1,9 +1,11 @@
 import { isEmpty } from 'lodash';
 
 import { ISearchPreview } from 'const/search';
+import { SurveyType } from 'const/survey';
 import { ICancelablePromise } from 'lib/datasource';
 import { getQueryString, replaceQueryString } from 'lib/utils/query-string';
 import { queryMetastoresSelector } from 'redux/dataSources/selector';
+import { showSurvey } from 'redux/survey/action';
 import {
     SearchBoardResource,
     SearchDataDocResource,
@@ -153,6 +155,16 @@ export function performSearch(): ThunkResult<Promise<ISearchPreview[]>> {
                             fields: Object.keys(searchState.searchFields),
                         });
                     }
+                    dispatch(
+                        showSurvey({
+                            type: SurveyType.TABLE_SEARCH,
+                            data: {
+                                searchFilters: searchParams.filters,
+                                searchString: searchParams.keywords,
+                                metastoreId,
+                            },
+                        })
+                    );
 
                     break;
                 case SearchType.Board:
